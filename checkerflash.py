@@ -56,7 +56,14 @@ def readvecs(inputfilename):
 
 
 # settings for launchScan:
-MR_settings = {"TR": 2.000, "volumes": 5, "sync": "t", "skip": 0, "sound": True}
+# settings for launchScan:
+MR_settings = {
+    "TR": 1,  # duration (sec) per volume
+    "volumes": 420,  # number of whole-brain 3D volumes / frames
+    "sync": "t",  # character to use as the sync timing event; assumed to come at start of a volume
+    "skip": 0,  # number of volumes lacking a sync pulse at start of scan (for T1 stabilization)
+    "sound": False,  # in test mode only, play a tone as a reminder of scanner noise
+}
 # infoDlg = gui.DlgFromDict(MR_settings, title='fMRI parameters', order=['TR','volumes'])
 # if not infoDlg.OK: core.quit()
 
