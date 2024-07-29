@@ -13,8 +13,9 @@ offline, without requiring either a scanner or a hardware sync pulse emulator.
 __author__ = "Jeremy Gray"
 
 from psychopy import visual, event, core, gui
-from psychopy.hardware.emulator import launchScan
 import numpy as np
+from psychopy.hardware.emulator import SyncGenerator, launchScan
+from psychopy_visionscience.radial import RadialStim
 
 ################################################
 # Configurable parameters
@@ -34,7 +35,7 @@ def drawcurrent(starttime, contrastvalue, flashPeriod):
 
 
 def makewedge(thecolor, thecolorspace):
-    thewedge = visual.RadialStim(
+    thewedge = RadialStim(
         win,
         tex="sqrXsqr",
         color=thecolor,
@@ -182,6 +183,15 @@ onset = 0.0
 vol = launchScan(
     win, MR_settings, globalClock=globalClock, simResponses=simResponses, wait_msg=""
 )
+"""thegenerator = SyncGenerator(
+    TR=MR_settings["TR"],
+    TA=1.0,
+    volumes=MR_settings["volumes"],
+    sync=MR_settings["sync"],
+    skip=MR_settings["skip"],
+    sound=MR_settings["sound"],
+)"""
+
 starttime = 0.0
 contrastvalue = contrasts[vol - 1]
 flashPeriod = flashPeriods[vol - 1]
