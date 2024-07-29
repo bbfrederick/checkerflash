@@ -183,14 +183,6 @@ onset = 0.0
 vol = launchScan(
     win, MR_settings, globalClock=globalClock, simResponses=simResponses, wait_msg=""
 )
-"""thegenerator = SyncGenerator(
-    TR=MR_settings["TR"],
-    TA=1.0,
-    volumes=MR_settings["volumes"],
-    sync=MR_settings["sync"],
-    skip=MR_settings["skip"],
-    sound=MR_settings["sound"],
-)"""
 
 starttime = 0.0
 contrastvalue = contrasts[vol - 1]
