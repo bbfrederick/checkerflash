@@ -1,0 +1,24 @@
+#!/opt/local/bin/python
+
+import numpy as np
+
+
+lmstoxyz=np.array([[0.8951, 0.2664, -0.1614], \
+    [-0.22981, 1.18340, 0.04641], \
+    [0.0389, -0.685, 1.0296]])
+
+xyztorgb= np.array([[2.9515373, -1.2894116, -0.4738445], \
+    [-1.0851093,  1.9908566,  0.0372026], \
+    [0.0854934, -0.2694964,  1.0912975]])
+
+lmstorgb=np.dot(lmstoxyz,xyztorgb)
+print lmstorgb
+
+neutral=np.transpose(np.array([0.5,0.5,0.5]))
+longmax=np.transpose(np.array([1.0,0.0,0.0]))
+longmin=np.transpose(np.array([0.0,0.5,0.5]))
+medium=np.transpose(np.array([0.0,1.0,0.0]))
+short=np.transpose(np.array([0.0,0.0,1.0]))
+
+print 'neutral: ',np.dot(lmstorgb,neutral)
+print 'long extremes: ',np.dot(lmstorgb,longmax), np.dot(lmstorgb,longmin)
